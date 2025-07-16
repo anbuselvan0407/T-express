@@ -20,8 +20,11 @@ router.get('/', authMiddleware, async (req, res) => {
 router.put('/:id/role', authMiddleware, async (req, res) => {
   const { role } = req.body;
   const user = await User.findByIdAndUpdate(req.params.id, { role }, { new: true });
-  if (!user) return res.status(404).json({ error: 'User not found' });
-  return res.json(user);
+  if (!user) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+    return res.json(user);
 });
 
 
