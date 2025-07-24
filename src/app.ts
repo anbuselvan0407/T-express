@@ -9,7 +9,11 @@ import path from 'path';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://t-track2.web.app', // Your Angular app URL
+  credentials: true
+}));
+
 app.use(express.json());
 
 connectDB();
