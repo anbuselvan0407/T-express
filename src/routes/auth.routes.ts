@@ -24,7 +24,8 @@ router.put('/:id/role', authMiddleware, async (req, res) => {
     res.status(404).json({ error: 'User not found' });
     return;
   }
-    return res.json(user);
+  res.json(user);
+    return ;
 });
 
 
