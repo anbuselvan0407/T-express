@@ -25,7 +25,6 @@ router.get('/:ticketId', (req, res) => __awaiter(void 0, void 0, void 0, functio
         res.status(500).json({ error: 'Failed to fetch comments' });
     }
 }));
-exports.default = router;
 router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { ticketId, user, message } = req.body;
@@ -42,3 +41,4 @@ router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ error: 'Failed to save comment' });
     }
 }));
+exports.default = router;

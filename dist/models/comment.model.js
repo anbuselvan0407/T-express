@@ -40,5 +40,4 @@ const commentSchema = new mongoose_1.Schema({
     message: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
 });
-const Comment = mongoose_1.default.model('Comment', commentSchema);
-exports.default = Comment;
+exports.default = mongoose_1.default.model('Comment', commentSchema);
