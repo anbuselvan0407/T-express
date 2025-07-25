@@ -26,3 +26,19 @@ router.get('/:ticketId', (req, res) => __awaiter(void 0, void 0, void 0, functio
     }
 }));
 exports.default = router;
+router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { ticketId, user, message } = req.body;
+        if (!ticketId || !user || !message) {
+            res.status(400).json({ error: 'Missing required fields' });
+            return;
+        }
+        const comment = new comment_model_1.default({ ticketId, user, message });
+        const saved = yield comment.save();
+        res.status(201).json(saved);
+    }
+    catch (err) {
+        console.error('Error saving comment:', err);
+        res.status(500).json({ error: 'Failed to save comment' });
+    }
+}));
